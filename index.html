@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Signal Forge — Turn Dead Leads Into Booked Revenue</title>
+<meta name="description" content="Signal Forge reactivates your old leads and past customers into booked appointments with done-for-you follow-up campaigns. You only pay per appointment that shows. First 3 free.">
+<meta name="theme-color" content="#0a0c10">
+
+<!-- Social preview -->
+<meta property="og:title" content="Signal Forge — Turn Dead Leads Into Booked Revenue">
+<meta property="og:description" content="Done-for-you lead reactivation. You pay per appointment that shows — the first 3 are free.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#0a0c10;
+    --bg-2:#0d1017;
+    --card:rgba(255,255,255,.028);
+    --border:rgba(255,255,255,.07);
+    --border-strong:rgba(255,255,255,.13);
+    --text:#e7e9ee;
+    --muted:#98a2b3;
+    --accent:#3b82f6;
+    --accent-2:#22d3ee;      /* cyan companion for gradients */
+    --accent-hover:#2f6fe0;
+    --accent-soft:rgba(59,130,246,.10);
+    --grad:linear-gradient(135deg,#3b82f6 0%,#22d3ee 100%);
+    --maxw:1080px;
+    --display:'Sora', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --body:'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--body);
+    font-size:16.5px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{font-family:var(--display);line-height:1.12;letter-spacing:-.02em;margin:0;font-weight:700}
+  p{margin:0}
+  a{color:inherit}
+  img{max-width:100%;display:block}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .eyebrow{
+    font-family:var(--body);
+    font-weight:600;
+    font-size:12.5px;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    background:var(--grad);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    margin-bottom:14px;
+    display:inline-block;
+  }
+  .muted{color:var(--muted)}
+  .grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+  /* Buttons */
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    background:var(--grad);
+    color:#04121f;
+    font-family:var(--body);
+    font-weight:700;
+    font-size:16px;
+    text-decoration:none;
+    padding:14px 28px;
+    border-radius:10px;
+    transition:transform .18s ease, box-shadow .18s ease, filter .18s ease;
+    box-shadow:0 8px 28px rgba(59,130,246,.30);
+  }
+  .btn:hover{transform:translateY(-2px);filter:brightness(1.06);box-shadow:0 12px 34px rgba(34,211,238,.34)}
+  .btn:focus-visible{outline:3px solid #fff;outline-offset:3px}
+  .btn .arrow{transition:transform .18s ease}
+  .btn:hover .arrow{transform:translateX(4px)}
+  .btn-ghost{
+    background:transparent;color:var(--text);box-shadow:none;
+    border:1px solid var(--border-strong);font-weight:600;
+  }
+  .btn-ghost:hover{filter:none;border-color:var(--accent);color:#fff}
+
+  /* Sticky top bar */
+  header.top{
+    position:sticky;top:0;z-index:50;
+    background:rgba(10,12,16,.7);
+    backdrop-filter:saturate(150%) blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  .top-inner{display:flex;align-items:center;justify-content:space-between;height:62px}
+  .brand{display:flex;align-items:center;gap:11px;font-family:var(--display);font-weight:800;font-size:18px;letter-spacing:-.01em;text-decoration:none;color:var(--text)}
+  .mark{
+    width:29px;height:29px;border-radius:8px;flex:none;
+    background:var(--grad);
+    position:relative;
+  }
+  .mark::after{
+    content:"";position:absolute;inset:0;margin:auto;width:11px;height:11px;
+    border:2.5px solid #0a0c10;border-radius:50%;border-right-color:transparent;transform:rotate(-45deg);
+  }
+  .top .btn{padding:9px 18px;font-size:14.5px;box-shadow:0 4px 16px rgba(59,130,246,.22)}
+  @media(max-width:560px){ .top .btn{display:none} }
+
+  /* Hero */
+  .hero{
+    position:relative;
+    padding:104px 0 96px;
+    border-bottom:1px solid var(--border);
+    isolation:isolate;
+  }
+  .hero-bg{
+    position:absolute;inset:0;z-index:-2;
+    background:url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2000&q=70") center 30%/cover no-repeat;
+  }
+  .hero-bg::after{
+    content:"";position:absolute;inset:0;
+    background:
+      linear-gradient(180deg, rgba(10,12,16,.7) 0%, rgba(10,12,16,.8) 55%, rgba(10,12,16,.97) 100%),
+      radial-gradient(1100px 560px at 12% -5%, rgba(34,211,238,.16), transparent 55%),
+      radial-gradient(900px 500px at 90% 10%, rgba(59,130,246,.14), transparent 55%);
+  }
+  .pill{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:13px;font-weight:600;color:var(--text);
+    background:rgba(59,130,246,.10);
+    border:1px solid rgba(59,130,246,.28);
+    padding:7px 14px;border-radius:999px;margin-bottom:22px;
+  }
+  .pill .dot{width:7px;height:7px;border-radius:50%;background:var(--accent-2);box-shadow:0 0 10px var(--accent-2)}
+  .hero h1{
+    font-size:clamp(2.3rem, 5.6vw, 4rem);
+    font-weight:800;
+    max-width:16ch;
+  }
+  .hero .sub{
+    margin-top:22px;
+    font-size:clamp(1.02rem,2.2vw,1.25rem);
+    color:var(--muted);
+    max-width:54ch;
+  }
+  .hero .sub b{color:var(--text);font-weight:600}
+  .hero .cta-row{margin-top:34px;display:flex;flex-wrap:wrap;align-items:center;gap:16px 20px}
+  .cta-note{font-size:13.5px;color:var(--muted)}
+  .cta-note b{color:var(--text);font-weight:600}
+
+  /* Section rhythm — lighter */
+  section{padding:78px 0}
+  .section-head{max-width:58ch}
+  .section-head h2{font-size:clamp(1.7rem,3.6vw,2.5rem)}
+  .section-head p{margin-top:14px;color:var(--muted);font-size:1.05rem}
+
+  /* Problem cards — lighter */
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+  .card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:26px 24px;
+    transition:border-color .2s ease, transform .2s ease;
+  }
+  .card:hover{border-color:var(--border-strong);transform:translateY(-3px)}
+  .card .stat{font-family:var(--display);font-weight:800;font-size:1.7rem;letter-spacing:-.01em;line-height:1}
+  .card h3{margin-top:12px;font-size:1.08rem;font-weight:700}
+  .card p{margin-top:8px;color:var(--muted);font-size:.95rem;line-height:1.55}
+
+  /* Full-width image band */
+  .band{position:relative;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+  .band-inner{position:relative;min-height:280px;display:flex;align-items:center;padding:54px 0;isolation:isolate}
+  .band-bg{position:absolute;inset:0;z-index:-2;background-size:cover;background-position:center}
+  .band-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg, rgba(10,12,16,.95) 0%, rgba(10,12,16,.7) 58%, rgba(11,20,32,.5) 100%)}
+  .band blockquote{margin:0;max-width:44ch}
+  .band blockquote p{font-family:var(--display);font-weight:700;font-size:clamp(1.4rem,3vw,1.95rem);line-height:1.28}
+  .band blockquote .who{margin-top:14px;color:var(--muted);font-family:var(--body);font-weight:500;font-size:.98rem}
+
+  /* How it works — lighter */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+  .step{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px 26px;position:relative}
+  .step .num{
+    width:42px;height:42px;border-radius:11px;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--grad);color:#04121f;
+    font-family:var(--display);font-weight:800;font-size:1.1rem;
+    box-shadow:0 6px 18px rgba(59,130,246,.28);
+  }
+  .step h3{margin-top:18px;font-size:1.15rem;font-weight:700}
+  .step p{margin-top:9px;color:var(--muted);font-size:.97rem;line-height:1.55}
+
+  /* Risk-free */
+  .risk{background:var(--bg-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+  .risk-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:52px;align-items:center}
+  .risk-list{list-style:none;margin:28px 0 0;padding:0;display:grid;gap:16px}
+  .risk-list li{display:flex;gap:14px;align-items:flex-start}
+  .risk-list .tick{
+    flex:none;width:25px;height:25px;border-radius:50%;margin-top:1px;
+    background:var(--grad);color:#04121f;font-size:13px;font-weight:800;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .risk-list b{font-weight:600}
+  .risk-list span.d{color:var(--muted);font-weight:400}
+  .proof-card{
+    background:linear-gradient(160deg, rgba(59,130,246,.16), rgba(34,211,238,.05));
+    border:1px solid rgba(59,130,246,.32);
+    border-radius:18px;
+    padding:36px 32px;
+    position:relative;overflow:hidden;
+  }
+  .proof-card::before{content:"";position:absolute;top:-40%;right:-20%;width:60%;height:120%;background:radial-gradient(circle, rgba(34,211,238,.18), transparent 70%)}
+  .proof-card>*{position:relative}
+  .proof-card .big{font-family:var(--display);font-weight:800;font-size:clamp(2.4rem,5.5vw,3.3rem);letter-spacing:-.02em;line-height:1}
+  .proof-card .big small{display:block;font-size:.95rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;font-family:var(--body)}
+  .proof-card p{margin-top:16px;color:var(--muted);font-size:.97rem}
+
+  /* Reviews */
+  .reviews{text-align:center}
+  .rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px;text-align:left}
+  .rev{
+    background:var(--card);border:1px solid var(--border);border-radius:14px;
+    padding:26px 24px;display:flex;flex-direction:column;gap:14px;
+  }
+  .stars{font-size:1rem;letter-spacing:2px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .rev q{font-style:normal;font-size:1rem;line-height:1.55;color:var(--text)}
+  .rev q::before{content:"“"}.rev q::after{content:"”"}
+  .rev .by{display:flex;align-items:center;gap:12px;margin-top:auto}
+  .rev .av{width:40px;height:40px;border-radius:50%;flex:none;background:var(--grad);display:flex;align-items:center;justify-content:center;color:#04121f;font-family:var(--display);font-weight:800;font-size:1rem}
+  .rev .by b{display:block;font-size:.95rem;font-weight:600}
+  .rev .by span{display:block;font-size:.85rem;color:var(--muted)}
+  .rev-note{margin-top:30px;font-size:.85rem;color:var(--muted)}
+
+  /* FAQ */
+  .faq{max-width:800px;margin:44px auto 0}
+  details{
+    border:1px solid var(--border);border-radius:12px;background:var(--card);
+    padding:0 24px;margin-bottom:12px;transition:border-color .18s ease;
+  }
+  details[open]{border-color:var(--border-strong)}
+  summary{
+    list-style:none;cursor:pointer;padding:20px 0;
+    font-family:var(--display);font-weight:600;font-size:1.08rem;
+    display:flex;justify-content:space-between;align-items:center;gap:18px;
+  }
+  summary::-webkit-details-marker{display:none}
+  summary .plus{flex:none;width:20px;height:20px;position:relative;transition:transform .2s ease}
+  summary .plus::before,summary .plus::after{content:"";position:absolute;background:var(--accent-2);border-radius:2px}
+  summary .plus::before{left:0;right:0;top:9px;height:2px}
+  summary .plus::after{top:0;bottom:0;left:9px;width:2px}
+  details[open] summary .plus{transform:rotate(45deg)}
+  details .a{padding:0 0 22px;color:var(--muted);max-width:70ch;font-size:.98rem}
+
+  /* Final CTA */
+  .final{position:relative;isolation:isolate;text-align:center;border-top:1px solid var(--border)}
+  .final-bg{position:absolute;inset:0;z-index:-2;background:url("https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=2000&q=70") center/cover no-repeat}
+  .final-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(10,12,16,.9), rgba(10,12,16,.95)), radial-gradient(800px 380px at 50% 0%, rgba(34,211,238,.2), transparent 60%)}
+  .final h2{font-size:clamp(1.9rem,4.6vw,3rem);font-weight:800;max-width:18ch;margin:0 auto}
+  .final p{margin:18px auto 0;color:var(--muted);max-width:52ch;font-size:1.06rem}
+  .final .btn{margin-top:32px}
+  .final .cta-note{margin-top:16px}
+
+  /* Footer */
+  footer{border-top:1px solid var(--border);padding:48px 0;background:var(--bg-2)}
+  .foot{display:flex;flex-wrap:wrap;gap:22px 40px;align-items:center;justify-content:space-between}
+  .foot .brand{font-size:16px}
+  .foot-links{display:flex;flex-wrap:wrap;gap:8px 24px;align-items:center;font-size:.93rem;color:var(--muted)}
+  .foot-links a{color:var(--muted);text-decoration:none;transition:color .15s ease}
+  .foot-links a:hover{color:var(--accent-2)}
+  .foot-links .sep{opacity:.4}
+  .copyright{margin-top:24px;color:var(--muted);font-size:.83rem}
+
+  /* Fade-in on scroll */
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease, transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+    html{scroll-behavior:auto}
+    .btn:hover,.card:hover{transform:none}
+  }
+
+  /* Responsive */
+  @media(max-width:880px){
+    .grid-3,.steps,.rev-grid{grid-template-columns:1fr}
+    .risk-grid{grid-template-columns:1fr;gap:32px}
+    section{padding:60px 0}
+    .hero{padding:84px 0 74px}
+  }
+  @media(max-width:420px){
+    body{font-size:16px}
+    .wrap{padding:0 18px}
+    .btn{width:100%;justify-content:center}
+    .card,.step,.rev{padding:24px 22px}
+    .proof-card{padding:28px 24px}
+    details{padding:0 20px}
+  }
+</style>
+</head>
+<body>
+
+<!-- Sticky bar -->
+<header class="top">
+  <div class="wrap top-inner">
+    <a class="brand" href="#top" aria-label="Signal Forge home">
+      <span class="mark" aria-hidden="true"></span>
+      Signal Forge
+    </a>
+    <a class="btn" href="https://calendly.com/signalforge-io/30min" target="_blank" rel="noopener">Book a 15-Minute Call</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- 1. HERO -->
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="wrap">
+      <span class="pill reveal"><span class="dot" aria-hidden="true"></span> Done-for-you lead reactivation</span>
+      <h1 class="reveal">Turn your <span class="grad-text">dead leads</span> into booked revenue.</h1>
+      <p class="sub reveal">I reactivate the old leads and past customers already sitting in your CRM into booked appointments — and you only pay <b>a flat <span class="price">$100</span> per appointment that actually shows.</b></p>
+      <div class="cta-row reveal">
+        <a class="btn" href="https://calendly.com/signalforge-io/30min" target="_blank" rel="noopener">
+          Book a 15-Minute Call <span class="arrow" aria-hidden="true">→</span>
+        </a>
+        <span class="cta-note"><b>First 3 appointments free.</b> No retainers, no contracts, no ad spend.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. THE PROBLEM -->
+  <section>
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">The problem</span>
+        <h2>Your next customers are already in your database.</h2>
+        <p>Most local service businesses are sitting on months — sometimes years — of leads and past customers they never followed up with. That's revenue that's already paid for, going stale.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card reveal">
+          <div class="stat grad-text">Cold</div>
+          <h3>Leads that never got a second touch</h3>
+          <p>The quote that went quiet, the "call me next month" that never got a callback. Interest doesn't vanish — the follow-up just stopped.</p>
+        </div>
+        <div class="card reveal">
+          <div class="stat grad-text">$0</div>
+          <h3>Extra cost to reach them</h3>
+          <p>You already paid to acquire these contacts. Re-engaging them doesn't require a single new dollar of ad spend.</p>
+        </div>
+        <div class="card reveal">
+          <div class="stat grad-text">Idle</div>
+          <h3>A CRM full of untapped revenue</h3>
+          <p>Every unworked list is booked jobs you haven't claimed yet. The data does the work the moment someone follows up.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Image band -->
+  <div class="band">
+    <div class="band-inner">
+      <div class="band-bg reveal" style="background-image:url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1800&q=65')"></div>
+      <div class="wrap">
+        <blockquote class="reveal">
+          <p>The follow-up you never had time to do — handled, under your name, start to finish.</p>
+          <div class="who">That's the entire job. You run the business. I fill the calendar.</div>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. HOW IT WORKS -->
+  <section>
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">How it works</span>
+        <h2>Three steps. No lift on your end.</h2>
+      </div>
+      <div class="steps">
+        <div class="step reveal">
+          <div class="num">1</div>
+          <h3>Send me your old lead list</h3>
+          <p>Export the leads and past customers sitting in your CRM, spreadsheet, or booking software. That's the only thing I need from you to start.</p>
+        </div>
+        <div class="step reveal">
+          <div class="num">2</div>
+          <h3>I run the campaign for you</h3>
+          <p>I build and run a done-for-you text and email reactivation campaign under your business name — the messaging, the timing, the replies. Fully managed.</p>
+        </div>
+        <div class="step reveal">
+          <div class="num">3</div>
+          <h3>You pay per appointment that shows</h3>
+          <p>Booked appointments land on your calendar. You pay a flat <span class="price">$100</span> for each one that actually shows up — nothing for no-shows, nothing upfront.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. RISK-FREE -->
+  <section class="risk">
+    <div class="wrap">
+      <div class="risk-grid">
+        <div class="reveal">
+          <span class="eyebrow">Why this is risk-free</span>
+          <h2 style="font-size:clamp(1.7rem,3.6vw,2.4rem)">All of the upside sits on my side of the table.</h2>
+          <ul class="risk-list">
+            <li><span class="tick" aria-hidden="true">✓</span><div><b>First 3 appointments are free.</b> <span class="d">You see real booked, shown appointments before you pay me a cent.</span></div></li>
+            <li><span class="tick" aria-hidden="true">✓</span><div><b>You only pay per show.</b> <span class="d">A flat <span class="price">$100</span> per appointment that actually shows up. No-shows cost you nothing.</span></div></li>
+            <li><span class="tick" aria-hidden="true">✓</span><div><b>No ad spend, ever.</b> <span class="d">This works your existing contacts — there's no new advertising budget to fund.</span></div></li>
+            <li><span class="tick" aria-hidden="true">✓</span><div><b>Your own data does the work.</b> <span class="d">No retainers, no contracts. Just leads you already own, finally followed up with.</span></div></li>
+          </ul>
+        </div>
+        <div class="proof-card reveal">
+          <div class="big"><small class="grad-text">The proof</small>3 free</div>
+          <p>I don't have your logo on a testimonial wall yet — so instead of asking you to trust a claim, I'll prove it. The first three appointments I book that show up are on me. If it doesn't work, you've lost nothing but the lead export.</p>
+          <a class="btn" style="margin-top:24px" href="https://calendly.com/signalforge-io/30min" target="_blank" rel="noopener">Book a 15-Minute Call <span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section>
+    <div class="wrap">
+      <div class="section-head reveal" style="margin:0 auto;text-align:center">
+        <span class="eyebrow">Questions</span>
+        <h2>Straight answers before we talk.</h2>
+      </div>
+      <div class="faq">
+        <details class="reveal">
+          <summary>Is this compliant? <span class="plus" aria-hidden="true"></span></summary>
+          <div class="a">Yes. I only contact people your business already has an existing relationship with — your own leads and past customers, not purchased or scraped lists. Campaigns follow standard opt-out practices, honor unsubscribe/STOP requests immediately, and run under your business name so recipients recognize who's reaching out. If there's contact you're not comfortable with, we simply don't send it.</div>
+        </details>
+        <details class="reveal">
+          <summary>Where do the leads come from? <span class="plus" aria-hidden="true"></span></summary>
+          <div class="a">From you. These aren't leads I generate or buy — they're the contacts already sitting in your CRM, spreadsheets, or booking software: old quotes, past customers, inquiries that went cold. That's the whole idea. We're mining revenue you've already paid to acquire, not spending on new leads.</div>
+        </details>
+        <details class="reveal">
+          <summary>What do you need from me? <span class="plus" aria-hidden="true"></span></summary>
+          <div class="a">A list of your old leads and past customers (name, phone, and/or email), and a quick sense of what you offer and what a good appointment looks like for you. That's essentially it. I handle the copywriting, the sending, the replies, and the booking. You approve the approach up front, then just watch appointments land on your calendar.</div>
+        </details>
+        <details class="reveal">
+          <summary>What does it cost? <span class="plus" aria-hidden="true"></span></summary>
+          <div class="a">A flat <span class="price">$100</span> per appointment that shows up — and the first 3 are free. That fee is set against what a booked job is actually worth to you, so it stays a small fraction of the revenue each appointment brings in. No retainers, no setup fees, no contracts, no ad spend. You don't pay for no-shows, and you don't pay anything until you've already seen it work.</div>
+        </details>
+        <details class="reveal">
+          <summary>How fast do results come? <span class="plus" aria-hidden="true"></span></summary>
+          <div class="a">Reactivation campaigns tend to move quickly because these people already know your business — many replies come within the first few days of a campaign going out. The exact pace depends on the size and age of your list, but you'll typically see booked appointments in the first week or two, not months down the road.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. FINAL CTA -->
+  <section class="final">
+    <div class="final-bg" aria-hidden="true"></div>
+    <div class="wrap">
+      <h2 class="reveal">Let's turn your dead list into booked jobs.</h2>
+      <p class="reveal">15 minutes is all it takes to see if there's revenue hiding in your database. No pitch deck, no pressure — just whether this is a fit.</p>
+      <div class="reveal">
+        <a class="btn" href="https://calendly.com/signalforge-io/30min" target="_blank" rel="noopener">Book a 15-Minute Call <span class="arrow" aria-hidden="true">→</span></a>
+        <div class="cta-note"><b>First 3 appointments free.</b> Then a flat <span class="price">$100</span> per appointment that shows.</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- 8. FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <a class="brand" href="#top">
+        <span class="mark" aria-hidden="true"></span>
+        Signal Forge
+      </a>
+      <div class="foot-links">
+        <a href="mailto:SignalForge.io@gmail.com">SignalForge.io@gmail.com</a>
+        <span class="sep" aria-hidden="true">•</span>
+        <a href="./privacy.html">Privacy Policy</a>
+        <span class="sep" aria-hidden="true">•</span>
+        <a href="./terms.html">Terms &amp; Conditions</a>
+      </div>
+    </div>
+    <p class="copyright">© <span id="yr"></span> Signal Forge. Lead reactivation for local service businesses.</p>
+  </div>
+</footer>
+
+<script>
+  /* ─────────────────────────────────────────────────────────────
+     YOUR PER-APPOINTMENT PRICE — edit this ONE line.
+     Set it to the flat fee you charge per appointment that shows,
+     based on the revenue an appointment generates for the client.
+     It auto-fills every price mention on the page.
+     Example: "$100", "$150", "$249"
+  ───────────────────────────────────────────────────────────── */
+  var PRICE = "$100";
+
+  document.querySelectorAll('.price').forEach(function(el){ el.textContent = PRICE; });
+
+  // Current year
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // Fade-in on scroll (respects reduced-motion)
+  (function(){
+    var els = document.querySelectorAll('.reveal');
+    if(!('IntersectionObserver' in window) ||
+       window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      els.forEach(function(el){ el.classList.add('in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold:0.12, rootMargin:'0px 0px -8% 0px' });
+    els.forEach(function(el){ io.observe(el); });
+  })();
+</script>
+
+</body>
+</html>
