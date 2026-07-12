@@ -30,6 +30,12 @@
     --accent-hover:#2f6fe0;
     --accent-soft:rgba(59,130,246,.10);
     --grad:linear-gradient(135deg,#3b82f6 0%,#22d3ee 100%);
+    /* Warm accent — added for more color across the page */
+    --accent-3:#fb7185;      /* coral */
+    --accent-3b:#f59e0b;     /* amber companion */
+    --grad-warm:linear-gradient(135deg,#fb7185 0%,#f59e0b 100%);
+    --warm-soft:rgba(251,113,133,.12);
+    --warm-border:rgba(251,113,133,.34);
     --maxw:1080px;
     --display:'Sora', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
     --body:'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
@@ -65,8 +71,10 @@
     margin-bottom:14px;
     display:inline-block;
   }
+  .eyebrow.warm{background:var(--grad-warm);-webkit-background-clip:text;background-clip:text;color:transparent}
   .muted{color:var(--muted)}
   .grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .grad-warm-text{background:var(--grad-warm);-webkit-background-clip:text;background-clip:text;color:transparent}
 
   /* Buttons */
   .btn{
@@ -83,6 +91,7 @@
     border-radius:10px;
     transition:transform .18s ease, box-shadow .18s ease, filter .18s ease;
     box-shadow:0 8px 28px rgba(59,130,246,.30);
+    border:0;cursor:pointer;
   }
   .btn:hover{transform:translateY(-2px);filter:brightness(1.06);box-shadow:0 12px 34px rgba(34,211,238,.34)}
   .btn:focus-visible{outline:3px solid #fff;outline-offset:3px}
@@ -115,24 +124,26 @@
   .top .btn{padding:9px 18px;font-size:14.5px;box-shadow:0 4px 16px rgba(59,130,246,.22)}
   @media(max-width:560px){ .top .btn{display:none} }
 
-  /* Hero */
+  /* Hero — now About + intake form */
   .hero{
     position:relative;
-    padding:104px 0 96px;
+    padding:88px 0 84px;
     border-bottom:1px solid var(--border);
     isolation:isolate;
   }
   .hero-bg{
     position:absolute;inset:0;z-index:-2;
-    background:url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2000&q=70") center 30%/cover no-repeat;
+    background:url("https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=2000&q=70") center 30%/cover no-repeat;
   }
   .hero-bg::after{
     content:"";position:absolute;inset:0;
     background:
-      linear-gradient(180deg, rgba(10,12,16,.7) 0%, rgba(10,12,16,.8) 55%, rgba(10,12,16,.97) 100%),
-      radial-gradient(1100px 560px at 12% -5%, rgba(34,211,238,.16), transparent 55%),
-      radial-gradient(900px 500px at 90% 10%, rgba(59,130,246,.14), transparent 55%);
+      linear-gradient(180deg, rgba(10,12,16,.82) 0%, rgba(10,12,16,.86) 55%, rgba(10,12,16,.97) 100%),
+      radial-gradient(1100px 560px at 8% -5%, rgba(34,211,238,.16), transparent 55%),
+      radial-gradient(900px 520px at 96% 8%, rgba(251,113,133,.16), transparent 55%);
   }
+  .hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:48px;align-items:center}
+
   .pill{
     display:inline-flex;align-items:center;gap:8px;
     font-size:13px;font-weight:600;color:var(--text);
@@ -141,21 +152,102 @@
     padding:7px 14px;border-radius:999px;margin-bottom:22px;
   }
   .pill .dot{width:7px;height:7px;border-radius:50%;background:var(--accent-2);box-shadow:0 0 10px var(--accent-2)}
-  .hero h1{
-    font-size:clamp(2.3rem, 5.6vw, 4rem);
+  .about h1{
+    font-size:clamp(2.1rem, 4.8vw, 3.35rem);
     font-weight:800;
-    max-width:16ch;
+    max-width:15ch;
   }
-  .hero .sub{
-    margin-top:22px;
-    font-size:clamp(1.02rem,2.2vw,1.25rem);
+  .about .sub{
+    margin-top:20px;
+    font-size:clamp(1rem,2vw,1.16rem);
     color:var(--muted);
-    max-width:54ch;
+    max-width:52ch;
   }
-  .hero .sub b{color:var(--text);font-weight:600}
-  .hero .cta-row{margin-top:34px;display:flex;flex-wrap:wrap;align-items:center;gap:16px 20px}
-  .cta-note{font-size:13.5px;color:var(--muted)}
-  .cta-note b{color:var(--text);font-weight:600}
+  .about .sub + .sub{margin-top:14px}
+  .about .sub b{color:var(--text);font-weight:600}
+  .trust-chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+  .tchip{
+    display:inline-flex;align-items:center;gap:7px;
+    font-size:12.5px;font-weight:600;color:var(--text);
+    background:var(--card);border:1px solid var(--border-strong);
+    padding:7px 13px;border-radius:999px;
+  }
+  .tchip .d{width:6px;height:6px;border-radius:50%;flex:none}
+  .tchip.cool .d{background:var(--accent-2);box-shadow:0 0 8px var(--accent-2)}
+  .tchip.warm .d{background:var(--accent-3);box-shadow:0 0 8px var(--accent-3)}
+  .secondary-cta{
+    margin-top:24px;display:inline-flex;align-items:center;gap:8px;
+    font-size:14.5px;font-weight:600;color:var(--text);text-decoration:none;
+    border-bottom:1px solid var(--warm-border);padding-bottom:2px;
+    transition:color .15s ease,border-color .15s ease;
+  }
+  .secondary-cta:hover{color:#fff;border-color:var(--accent-3)}
+  .secondary-cta .arrow{transition:transform .18s ease}
+  .secondary-cta:hover .arrow{transform:translateX(3px)}
+
+  /* Intake form card */
+  .form-card{
+    background:linear-gradient(165deg, rgba(59,130,246,.10), rgba(251,113,133,.06));
+    border:1px solid var(--border-strong);
+    border-radius:20px;
+    padding:30px 28px;
+    box-shadow:0 24px 60px rgba(0,0,0,.4);
+    backdrop-filter:saturate(140%) blur(4px);
+  }
+  .form-card .fc-eye{
+    font-family:var(--body);font-weight:700;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;
+    background:var(--grad-warm);-webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .form-card h2{margin-top:8px;font-size:1.42rem;font-weight:800;line-height:1.18}
+  .form-card .fc-sub{margin-top:9px;color:var(--muted);font-size:.93rem;line-height:1.5}
+  form.intake{margin-top:20px;display:grid;gap:13px}
+  .field{display:grid;gap:6px}
+  .field label{font-size:.82rem;font-weight:600;color:var(--text)}
+  .field .req{color:var(--accent-3)}
+  .field input,.field select,.field textarea{
+    width:100%;
+    background:rgba(255,255,255,.045);
+    border:1px solid var(--border-strong);
+    border-radius:10px;
+    padding:11px 13px;
+    color:var(--text);
+    font-family:var(--body);font-size:15px;
+    transition:border-color .15s ease, box-shadow .15s ease, background .15s ease;
+  }
+  .field input::placeholder,.field textarea::placeholder{color:#66707e}
+  .field input:focus,.field select:focus,.field textarea:focus{
+    outline:none;
+    border-color:var(--accent-3);
+    box-shadow:0 0 0 3px var(--warm-soft);
+    background:rgba(255,255,255,.06);
+  }
+  .field select{appearance:none;-webkit-appearance:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23fb7185' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:right 13px center;padding-right:34px;cursor:pointer}
+  .field select option{color:#0a0c10}
+  .field textarea{min-height:66px;resize:vertical}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+  /* File upload */
+  .file-field label.flabel{margin-bottom:2px}
+  .file-input{
+    display:flex;align-items:center;gap:10px;
+    background:rgba(255,255,255,.03);
+    border:1px dashed var(--border-strong);
+    border-radius:10px;padding:10px 12px;font-size:13.5px;color:var(--muted);
+  }
+  .file-input input[type=file]{font-size:12.5px;color:var(--muted);max-width:100%}
+  .file-hint{font-size:11.5px;color:var(--muted);margin-top:2px}
+  /* Honeypot (spam trap) — visually hidden */
+  .hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden}
+  .submit-btn{width:100%;justify-content:center;margin-top:4px}
+  .submit-btn[disabled]{opacity:.65;cursor:default;transform:none;filter:none}
+  .form-consent{font-size:11.8px;color:var(--muted);line-height:1.45;margin-top:2px}
+  .form-consent a{color:var(--accent-2);text-decoration:none}
+  .form-consent a:hover{text-decoration:underline}
+  .form-msg{font-size:13.5px;line-height:1.5;padding:11px 13px;border-radius:10px;display:none}
+  .form-msg.show{display:block}
+  .form-msg.success{display:block;background:rgba(34,211,238,.10);border:1px solid rgba(34,211,238,.32);color:#cdfaff}
+  .form-msg.error{display:block;background:var(--warm-soft);border:1px solid var(--warm-border);color:#ffd9df}
 
   /* Section rhythm — lighter */
   section{padding:78px 0}
@@ -181,7 +273,7 @@
   .band{position:relative;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
   .band-inner{position:relative;min-height:280px;display:flex;align-items:center;padding:54px 0;isolation:isolate}
   .band-bg{position:absolute;inset:0;z-index:-2;background-size:cover;background-position:center}
-  .band-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg, rgba(10,12,16,.95) 0%, rgba(10,12,16,.7) 58%, rgba(11,20,32,.5) 100%)}
+  .band-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg, rgba(10,12,16,.95) 0%, rgba(10,12,16,.72) 56%, rgba(30,15,20,.5) 100%)}
   .band blockquote{margin:0;max-width:44ch}
   .band blockquote p{font-family:var(--display);font-weight:700;font-size:clamp(1.4rem,3vw,1.95rem);line-height:1.28}
   .band blockquote .who{margin-top:14px;color:var(--muted);font-family:var(--body);font-weight:500;font-size:.98rem}
@@ -196,6 +288,7 @@
     font-family:var(--display);font-weight:800;font-size:1.1rem;
     box-shadow:0 6px 18px rgba(59,130,246,.28);
   }
+  .step:nth-child(2) .num{background:var(--grad-warm);box-shadow:0 6px 18px rgba(251,113,133,.28)}
   .step h3{margin-top:18px;font-size:1.15rem;font-weight:700}
   .step p{margin-top:9px;color:var(--muted);font-size:.97rem;line-height:1.55}
 
@@ -212,13 +305,13 @@
   .risk-list b{font-weight:600}
   .risk-list span.d{color:var(--muted);font-weight:400}
   .proof-card{
-    background:linear-gradient(160deg, rgba(59,130,246,.16), rgba(34,211,238,.05));
-    border:1px solid rgba(59,130,246,.32);
+    background:linear-gradient(160deg, rgba(251,113,133,.16), rgba(245,158,11,.06));
+    border:1px solid var(--warm-border);
     border-radius:18px;
     padding:36px 32px;
     position:relative;overflow:hidden;
   }
-  .proof-card::before{content:"";position:absolute;top:-40%;right:-20%;width:60%;height:120%;background:radial-gradient(circle, rgba(34,211,238,.18), transparent 70%)}
+  .proof-card::before{content:"";position:absolute;top:-40%;right:-20%;width:60%;height:120%;background:radial-gradient(circle, rgba(251,113,133,.18), transparent 70%)}
   .proof-card>*{position:relative}
   .proof-card .big{font-family:var(--display);font-weight:800;font-size:clamp(2.4rem,5.5vw,3.3rem);letter-spacing:-.02em;line-height:1}
   .proof-card .big small{display:block;font-size:.95rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;font-family:var(--body)}
@@ -258,16 +351,18 @@
   summary .plus::before{left:0;right:0;top:9px;height:2px}
   summary .plus::after{top:0;bottom:0;left:9px;width:2px}
   details[open] summary .plus{transform:rotate(45deg)}
+  details[open] summary .plus::before,details[open] summary .plus::after{background:var(--accent-3)}
   details .a{padding:0 0 22px;color:var(--muted);max-width:70ch;font-size:.98rem}
 
   /* Final CTA */
   .final{position:relative;isolation:isolate;text-align:center;border-top:1px solid var(--border)}
-  .final-bg{position:absolute;inset:0;z-index:-2;background:url("https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=2000&q=70") center/cover no-repeat}
-  .final-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(10,12,16,.9), rgba(10,12,16,.95)), radial-gradient(800px 380px at 50% 0%, rgba(34,211,238,.2), transparent 60%)}
+  .final-bg{position:absolute;inset:0;z-index:-2;background:url("https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=2000&q=70") center/cover no-repeat}
+  .final-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(10,12,16,.9), rgba(10,12,16,.95)), radial-gradient(820px 400px at 50% 0%, rgba(251,113,133,.18), transparent 60%)}
   .final h2{font-size:clamp(1.9rem,4.6vw,3rem);font-weight:800;max-width:18ch;margin:0 auto}
   .final p{margin:18px auto 0;color:var(--muted);max-width:52ch;font-size:1.06rem}
-  .final .btn{margin-top:32px}
-  .final .cta-note{margin-top:16px}
+  .final .cta-row{margin-top:32px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:center}
+  .final .cta-note{margin-top:16px;font-size:13.5px;color:var(--muted)}
+  .final .cta-note b{color:var(--text);font-weight:600}
 
   /* Footer */
   footer{border-top:1px solid var(--border);padding:48px 0;background:var(--bg-2)}
@@ -291,10 +386,15 @@
 
   /* Responsive */
   @media(max-width:880px){
+    .hero-grid{grid-template-columns:1fr;gap:38px}
+    .about h1{max-width:20ch}
     .grid-3,.steps,.rev-grid{grid-template-columns:1fr}
     .risk-grid{grid-template-columns:1fr;gap:32px}
     section{padding:60px 0}
-    .hero{padding:84px 0 74px}
+    .hero{padding:72px 0 64px}
+  }
+  @media(max-width:480px){
+    .form-row{grid-template-columns:1fr}
   }
   @media(max-width:420px){
     body{font-size:16px}
@@ -302,6 +402,7 @@
     .btn{width:100%;justify-content:center}
     .card,.step,.rev{padding:24px 22px}
     .proof-card{padding:28px 24px}
+    .form-card{padding:26px 22px}
     details{padding:0 20px}
   }
 </style>
@@ -321,18 +422,121 @@
 
 <main id="top">
 
-  <!-- 1. HERO -->
+  <!-- 1. HERO — About + intake form -->
   <section class="hero">
     <div class="hero-bg" aria-hidden="true"></div>
     <div class="wrap">
-      <span class="pill reveal"><span class="dot" aria-hidden="true"></span> Done-for-you lead reactivation</span>
-      <h1 class="reveal">Turn your <span class="grad-text">dead leads</span> into booked revenue.</h1>
-      <p class="sub reveal">I reactivate the old leads and past customers already sitting in your CRM into booked appointments — and you only pay <b>a flat <span class="price">$100</span> per appointment that actually shows.</b></p>
-      <div class="cta-row reveal">
-        <a class="btn" href="https://calendly.com/signalforge-io/30min" target="_blank" rel="noopener">
-          Book a 15-Minute Call <span class="arrow" aria-hidden="true">→</span>
-        </a>
-        <span class="cta-note"><b>First 3 appointments free.</b> No retainers, no contracts, no ad spend.</span>
+      <div class="hero-grid">
+
+        <!-- About us -->
+        <div class="about">
+          <span class="pill reveal"><span class="dot" aria-hidden="true"></span> Done-for-you lead reactivation</span>
+          <h1 class="reveal">We turn the <span class="grad-text">dead leads</span> in your CRM into <span class="grad-warm-text">booked revenue</span>.</h1>
+          <p class="sub reveal">Data Thaw is a done-for-you reactivation service for local service businesses. We take the old leads and past customers already sitting in your database — the quote that went quiet, the one-time job, the "call me later" that never got a callback — and turn them into booked appointments <b>under your business name</b>.</p>
+          <p class="sub reveal">No ads. No retainers. No contracts. You pay a flat <b><span class="price">$100</span> for each appointment that actually shows up</b> — and your first 3 are completely free.</p>
+          <div class="trust-chips reveal">
+            <span class="tchip cool"><span class="d" aria-hidden="true"></span> First 3 appointments free</span>
+            <span class="tchip warm"><span class="d" aria-hidden="true"></span> Pay only per show</span>
+            <span class="tchip cool"><span class="d" aria-hidden="true"></span> Zero ad spend</span>
+          </div>
+          <a class="secondary-cta reveal" href="https://calendly.com/signalforge-io/30min" target="_blank" rel="noopener">
+            Prefer to just talk first? Book a 15-minute call <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+
+        <!-- Intake form -->
+        <div class="form-card reveal" id="start">
+          <div class="fc-eye">Get started</div>
+          <h2>Start with your 3 free appointments</h2>
+          <p class="fc-sub">Tell us about your business and the list you're sitting on. We'll map out what a reactivation campaign could book for you — free, no obligation.</p>
+
+          <form class="intake" id="intakeForm" novalidate>
+            <div class="form-row">
+              <div class="field">
+                <label for="business">Business name <span class="req" aria-hidden="true">*</span></label>
+                <input id="business" name="business_name" type="text" autocomplete="organization" required placeholder="Acme Plumbing">
+              </div>
+              <div class="field">
+                <label for="contact">Your name <span class="req" aria-hidden="true">*</span></label>
+                <input id="contact" name="contact_name" type="text" autocomplete="name" required placeholder="Jane Smith">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="field">
+                <label for="phone">Phone <span class="req" aria-hidden="true">*</span></label>
+                <input id="phone" name="phone" type="tel" autocomplete="tel" required placeholder="(555) 123-4567">
+              </div>
+              <div class="field">
+                <label for="email">Email <span class="req" aria-hidden="true">*</span></label>
+                <input id="email" name="email" type="email" autocomplete="email" required placeholder="you@business.com">
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="website">Website <span class="muted">(optional)</span></label>
+              <input id="website" name="website" type="text" inputmode="url" autocomplete="url" placeholder="acmeplumbing.com">
+            </div>
+
+            <div class="form-row">
+              <div class="field">
+                <label for="crm">CRM / where your leads live <span class="req" aria-hidden="true">*</span></label>
+                <select id="crm" name="crm" required>
+                  <option value="" selected disabled>Select one…</option>
+                  <option>HubSpot</option>
+                  <option>GoHighLevel</option>
+                  <option>Jobber</option>
+                  <option>Housecall Pro</option>
+                  <option>ServiceTitan</option>
+                  <option>Salesforce</option>
+                  <option>Zoho</option>
+                  <option>Keap / Infusionsoft</option>
+                  <option>Google Sheets / Spreadsheet</option>
+                  <option>Other</option>
+                  <option>Not sure / none yet</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="listsize">Approx. list size <span class="muted">(optional)</span></label>
+                <select id="listsize" name="list_size">
+                  <option value="" selected disabled>Select a range…</option>
+                  <option>Under 250</option>
+                  <option>250 - 1,000</option>
+                  <option>1,000 - 5,000</option>
+                  <option>5,000 - 20,000</option>
+                  <option>20,000+</option>
+                  <option>Not sure</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field file-field">
+              <label class="flabel" for="listfile">Have an export handy? Upload your list <span class="muted">(optional)</span></label>
+              <div class="file-input">
+                <input id="listfile" name="list_file" type="file" accept=".csv,.xlsx,.xls">
+              </div>
+              <div class="file-hint">CSV or Excel export from your CRM. Never a password — we only ever need the list itself.</div>
+            </div>
+
+            <div class="field">
+              <label for="notes">Anything else? <span class="muted">(optional)</span></label>
+              <textarea id="notes" name="notes" placeholder="What you offer, what a good appointment looks like for you, etc."></textarea>
+            </div>
+
+            <!-- Honeypot: real people leave this empty -->
+            <div class="hp" aria-hidden="true">
+              <label for="company_url_hp">Company URL</label>
+              <input id="company_url_hp" name="company_url_hp" type="text" tabindex="-1" autocomplete="off">
+            </div>
+
+            <button class="btn submit-btn" id="submitBtn" type="submit">Get my free appointments <span class="arrow" aria-hidden="true">→</span></button>
+
+            <p class="form-consent">By submitting, you agree to our <a href="./privacy.html">Privacy Policy</a>. We only ask which CRM you use — never your CRM password or API keys.</p>
+
+            <div class="form-msg" id="formMsg" role="status" aria-live="polite"></div>
+          </form>
+        </div>
+
       </div>
     </div>
   </section>
@@ -352,7 +556,7 @@
           <p>The quote that went quiet, the "call me next month" that never got a callback. Interest doesn't vanish — the follow-up just stopped.</p>
         </div>
         <div class="card reveal">
-          <div class="stat grad-text">$0</div>
+          <div class="stat grad-warm-text">$0</div>
           <h3>Extra cost to reach them</h3>
           <p>You already paid to acquire these contacts. Re-engaging them doesn't require a single new dollar of ad spend.</p>
         </div>
@@ -368,11 +572,11 @@
   <!-- Image band -->
   <div class="band">
     <div class="band-inner">
-      <div class="band-bg reveal" style="background-image:url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1800&q=65')"></div>
+      <div class="band-bg reveal" style="background-image:url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1800&q=65')"></div>
       <div class="wrap">
         <blockquote class="reveal">
           <p>The follow-up you never had time to do — handled, under your name, start to finish.</p>
-          <div class="who">That's the entire job. You run the business. I fill the calendar.</div>
+          <div class="who">That's the entire job. You run the business. We fill the calendar.</div>
         </blockquote>
       </div>
     </div>
@@ -382,19 +586,19 @@
   <section>
     <div class="wrap">
       <div class="section-head reveal">
-        <span class="eyebrow">How it works</span>
+        <span class="eyebrow warm">How it works</span>
         <h2>Three steps. No lift on your end.</h2>
       </div>
       <div class="steps">
         <div class="step reveal">
           <div class="num">1</div>
-          <h3>Send me your old lead list</h3>
-          <p>Export the leads and past customers sitting in your CRM, spreadsheet, or booking software. That's the only thing I need from you to start.</p>
+          <h3>Send us your old lead list</h3>
+          <p>Export the leads and past customers sitting in your CRM, spreadsheet, or booking software — or just tell us which CRM you use and we'll help you pull it. That's the only thing we need from you to start.</p>
         </div>
         <div class="step reveal">
           <div class="num">2</div>
-          <h3>I run the campaign for you</h3>
-          <p>I build and run a done-for-you text and email reactivation campaign under your business name — the messaging, the timing, the replies. Fully managed.</p>
+          <h3>We run the campaign for you</h3>
+          <p>We build and run a done-for-you text and email reactivation campaign under your business name — the messaging, the timing, the replies. Fully managed.</p>
         </div>
         <div class="step reveal">
           <div class="num">3</div>
@@ -411,18 +615,18 @@
       <div class="risk-grid">
         <div class="reveal">
           <span class="eyebrow">Why this is risk-free</span>
-          <h2 style="font-size:clamp(1.7rem,3.6vw,2.4rem)">All of the upside sits on my side of the table.</h2>
+          <h2 style="font-size:clamp(1.7rem,3.6vw,2.4rem)">All of the upside sits on our side of the table.</h2>
           <ul class="risk-list">
-            <li><span class="tick" aria-hidden="true">✓</span><div><b>First 3 appointments are free.</b> <span class="d">You see real booked, shown appointments before you pay me a cent.</span></div></li>
+            <li><span class="tick" aria-hidden="true">✓</span><div><b>First 3 appointments are free.</b> <span class="d">You see real booked, shown appointments before you pay us a cent.</span></div></li>
             <li><span class="tick" aria-hidden="true">✓</span><div><b>You only pay per show.</b> <span class="d">A flat <span class="price">$100</span> per appointment that actually shows up. No-shows cost you nothing.</span></div></li>
             <li><span class="tick" aria-hidden="true">✓</span><div><b>No ad spend, ever.</b> <span class="d">This works your existing contacts — there's no new advertising budget to fund.</span></div></li>
             <li><span class="tick" aria-hidden="true">✓</span><div><b>Your own data does the work.</b> <span class="d">No retainers, no contracts. Just leads you already own, finally followed up with.</span></div></li>
           </ul>
         </div>
         <div class="proof-card reveal">
-          <div class="big"><small class="grad-text">The proof</small>3 free</div>
-          <p>I don't have your logo on a testimonial wall yet — so instead of asking you to trust a claim, I'll prove it. The first three appointments I book that show up are on me. If it doesn't work, you've lost nothing but the lead export.</p>
-          <a class="btn" style="margin-top:24px" href="https://calendly.com/signalforge-io/30min" target="_blank" rel="noopener">Book a 15-Minute Call <span class="arrow" aria-hidden="true">→</span></a>
+          <div class="big"><small class="grad-warm-text">The proof</small>3 free</div>
+          <p>We don't have your logo on a testimonial wall yet — so instead of asking you to trust a claim, we'll prove it. The first three appointments we book that show up are on us. If it doesn't work, you've lost nothing but the lead export.</p>
+          <a class="btn" style="margin-top:24px" href="#start">Start with 3 free appointments <span class="arrow" aria-hidden="true">→</span></a>
         </div>
       </div>
     </div>
@@ -438,15 +642,15 @@
       <div class="faq">
         <details class="reveal">
           <summary>Is this compliant? <span class="plus" aria-hidden="true"></span></summary>
-          <div class="a">Yes. I only contact people your business already has an existing relationship with — your own leads and past customers, not purchased or scraped lists. Campaigns follow standard opt-out practices, honor unsubscribe/STOP requests immediately, and run under your business name so recipients recognize who's reaching out. If there's contact you're not comfortable with, we simply don't send it.</div>
+          <div class="a">Yes. We only contact people your business already has an existing relationship with — your own leads and past customers, not purchased or scraped lists. Campaigns follow standard opt-out practices, honor unsubscribe/STOP requests immediately, and run under your business name so recipients recognize who's reaching out. If there's contact you're not comfortable with, we simply don't send it.</div>
+        </details>
+        <details class="reveal">
+          <summary>Do I have to give you my CRM login? <span class="plus" aria-hidden="true"></span></summary>
+          <div class="a">Never. We don't ask for CRM passwords or API keys, and you should never type those into any web form. All we need is the list itself — a CSV/Excel export of your old leads and past customers. On the form above you just tell us which CRM you use; if you'd like help pulling the export, we'll walk you through it on the call.</div>
         </details>
         <details class="reveal">
           <summary>Where do the leads come from? <span class="plus" aria-hidden="true"></span></summary>
-          <div class="a">From you. These aren't leads I generate or buy — they're the contacts already sitting in your CRM, spreadsheets, or booking software: old quotes, past customers, inquiries that went cold. That's the whole idea. We're mining revenue you've already paid to acquire, not spending on new leads.</div>
-        </details>
-        <details class="reveal">
-          <summary>What do you need from me? <span class="plus" aria-hidden="true"></span></summary>
-          <div class="a">A list of your old leads and past customers (name, phone, and/or email), and a quick sense of what you offer and what a good appointment looks like for you. That's essentially it. I handle the copywriting, the sending, the replies, and the booking. You approve the approach up front, then just watch appointments land on your calendar.</div>
+          <div class="a">From you. These aren't leads we generate or buy — they're the contacts already sitting in your CRM, spreadsheets, or booking software: old quotes, past customers, inquiries that went cold. That's the whole idea. We're mining revenue you've already paid to acquire, not spending on new leads.</div>
         </details>
         <details class="reveal">
           <summary>What does it cost? <span class="plus" aria-hidden="true"></span></summary>
@@ -465,9 +669,12 @@
     <div class="final-bg" aria-hidden="true"></div>
     <div class="wrap">
       <h2 class="reveal">Let's turn your dead list into booked jobs.</h2>
-      <p class="reveal">15 minutes is all it takes to see if there's revenue hiding in your database. No pitch deck, no pressure — just whether this is a fit.</p>
+      <p class="reveal">Fill out the quick form and we'll map out what your old leads could book — or grab 15 minutes with us. No pitch deck, no pressure, just whether this is a fit.</p>
       <div class="reveal">
-        <a class="btn" href="https://calendly.com/signalforge-io/30min" target="_blank" rel="noopener">Book a 15-Minute Call <span class="arrow" aria-hidden="true">→</span></a>
+        <div class="cta-row">
+          <a class="btn" href="#start">Start with 3 free appointments <span class="arrow" aria-hidden="true">→</span></a>
+          <a class="btn btn-ghost" href="https://calendly.com/signalforge-io/30min" target="_blank" rel="noopener">Book a 15-minute call</a>
+        </div>
         <div class="cta-note"><b>First 3 appointments free.</b> Then a flat <span class="price">$100</span> per appointment that shows.</div>
       </div>
     </div>
@@ -497,13 +704,22 @@
 
 <script>
   /* ─────────────────────────────────────────────────────────────
-     YOUR PER-APPOINTMENT PRICE — edit this ONE line.
+     1) YOUR PER-APPOINTMENT PRICE — edit this ONE line.
      Set it to the flat fee you charge per appointment that shows,
      based on the revenue an appointment generates for the client.
      It auto-fills every price mention on the page.
      Example: "$100", "$150", "$249"
   ───────────────────────────────────────────────────────────── */
   var PRICE = "$100";
+
+  /* ─────────────────────────────────────────────────────────────
+     2) INTAKE FORM DESTINATION — paste your n8n webhook URL here.
+     Until this is set to the live "Production" webhook URL from your
+     n8n intake workflow, the form will show a fallback message that
+     points people to email + the Calendly link instead.
+     Example: "https://YOURNAME.app.n8n.cloud/webhook/datathaw-intake"
+  ───────────────────────────────────────────────────────────── */
+  var INTAKE_WEBHOOK = "https://jt49harte.app.n8n.cloud/webhook/datathaw-intake";
 
   document.querySelectorAll('.price').forEach(function(el){ el.textContent = PRICE; });
 
@@ -524,6 +740,62 @@
       });
     }, { threshold:0.12, rootMargin:'0px 0px -8% 0px' });
     els.forEach(function(el){ io.observe(el); });
+  })();
+
+  // Intake form submit
+  (function(){
+    var form = document.getElementById('intakeForm');
+    if(!form) return;
+    var btn  = document.getElementById('submitBtn');
+    var msg  = document.getElementById('formMsg');
+    var configured = INTAKE_WEBHOOK && INTAKE_WEBHOOK.indexOf('http') === 0;
+
+    function setMsg(kind, html){
+      msg.className = 'form-msg ' + kind;
+      msg.innerHTML = html;
+    }
+    var fallbackHTML = 'Thanks! Our online form isn\'t hooked up just yet — please email your details to ' +
+      '<a href="mailto:support@datathaw.com">support@datathaw.com</a> or ' +
+      '<a href="https://calendly.com/signalforge-io/30min" target="_blank" rel="noopener">book a 15-minute call</a> and we\'ll take it from there.';
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+
+      // Honeypot — silently accept & stop if filled (a bot)
+      var hp = form.querySelector('[name="company_url_hp"]');
+      if(hp && hp.value){ setMsg('success', 'Thanks — we\'ll be in touch shortly.'); return; }
+
+      if(!form.checkValidity()){ form.reportValidity(); return; }
+
+      // If the webhook isn't wired yet, degrade gracefully instead of erroring.
+      if(!configured){ setMsg('error', fallbackHTML); return; }
+
+      var original = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = 'Sending…';
+      msg.className = 'form-msg';
+
+      var data = new FormData(form);
+      data.delete('company_url_hp');
+      data.append('source', 'datathaw.com website intake');
+      data.append('submitted_at', new Date().toISOString());
+
+      fetch(INTAKE_WEBHOOK, { method:'POST', body:data })
+        .then(function(res){
+          if(!res.ok){ throw new Error('HTTP ' + res.status); }
+          form.reset();
+          setMsg('success', '✅ Got it! We\'ll review your list and reach out shortly about your 3 free appointments.');
+        })
+        .catch(function(){
+          setMsg('error', 'Something went wrong sending your details. Please email ' +
+            '<a href="mailto:support@datathaw.com">support@datathaw.com</a> or ' +
+            '<a href="https://calendly.com/signalforge-io/30min" target="_blank" rel="noopener">book a call</a> and we\'ll get you set up.');
+        })
+        .then(function(){
+          btn.disabled = false;
+          btn.innerHTML = original;
+        });
+    });
   })();
 </script>
 

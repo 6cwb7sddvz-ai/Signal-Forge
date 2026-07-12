@@ -30,16 +30,27 @@ conversion goal is booking a 15-minute Calendly call.
 **One self-contained file** — all CSS in a single `<style>` block, all JS in a single `<script>`
 block. No frameworks, no build step, no dependencies, no bundler. Edit the file directly.
 
-Section order: sticky header → hero (dark Unsplash bg + overlay) → "The problem" (3 stat cards) →
-image band quote → "How it works" (3 steps) → "Why risk-free" (+ proof card) → FAQ (native
-`<details>`) → final CTA → footer. A reviews section was built then **removed** at the user's
-request; its CSS (`.reviews`, `.rev`, `.stars`, …) is left dormant for easy re-add.
+Section order: sticky header → hero (**two-column: About-us copy + intake form**, `#start`) →
+"The problem" (3 stat cards) → image band quote → "How it works" (3 steps) → "Why risk-free"
+(+ proof card) → FAQ (native `<details>`) → final CTA (form + Calendly) → footer. A reviews section
+was built then **removed** at the user's request; its CSS (`.reviews`, `.rev`, `.stars`, …) is left
+dormant for easy re-add.
+
+**Hero intake form** (`#intakeForm`): captures business name, contact name, phone, email, website,
+CRM (dropdown), list size, optional notes — plus a hidden honeypot (`company_url_hp`) for spam. It
+posts a `FormData` (CORS-simple request, no custom headers) to the n8n webhook in the
+`INTAKE_WEBHOOK` constant; the handler shows inline success/error and falls back to email/Calendly
+if the webhook is unset. Calendly is now the *secondary* CTA. It deliberately **never** collects CRM
+passwords or API keys — only which CRM they use (secure CRM pull happens later during onboarding).
 
 ### Design system
 - **Theme:** near-black bg `#0a0c10`, off-white text `#e7e9ee`, muted grey `#98a2b3`.
 - **Accent:** blue `#3b82f6` + cyan `#22d3ee`, combined in `--grad` (blue→cyan gradient) used on
   headline highlight, buttons, pill dot, step badges, stat numbers, ticks, FAQ plus-icons.
-  Restyle via the `:root` CSS variables, not per-element colors.
+  A **warm accent** (`--accent-3` coral `#fb7185` + `--accent-3b` amber `#f59e0b`, `--grad-warm`)
+  adds color on: the "booked revenue" headline span, form focus rings + required asterisks, the
+  "Get started" eyebrow, step-2 badge, proof card, and section glows. Restyle via the `:root` CSS
+  variables, not per-element colors.
 - **Fonts:** Sora (display) + Inter (body) from Google Fonts, each with a system fallback stack.
 - **Motion:** any element with class `reveal` fades in via IntersectionObserver; disabled under
   `prefers-reduced-motion`. Add `reveal` to new sections for consistency.
@@ -54,6 +65,11 @@ request; its CSS (`.reviews`, `.rev`, `.stars`, …) is left dormant for easy re
   (`support@datathaw.com`) repeat across CTAs / footer — update all occurrences together.
   ⚠️ The Calendly handle is still `signalforge-io` (the actual account); changing that URL text
   breaks booking unless the Calendly account itself is renamed first.
+- **Intake webhook:** the `var INTAKE_WEBHOOK = "…"` constant (next to `PRICE`) is the single place
+  the form's POST target lives. It points at the live n8n **"Data Thaw — Website Intake"** workflow
+  (webhook → honeypot filter → append to the **"Website Intake"** tab of the leads sheet, via the
+  same Google Sheets OAuth cred the Plaid workflow uses). This is a **public endpoint** by nature
+  (it's in client JS) — that's expected for any web form, same as a Formspree/Google-Form action.
 
 ## Legal pages (`privacy.html`, `terms.html`)
 
@@ -90,7 +106,9 @@ been committed yet.
 - **No fabricated social proof** — no invented testimonials, fake client logos, or made-up
   first-party stats. The "first 3 appointments free" risk-reversal stands in for social proof. Any
   (re)added reviews section ships with clearly-marked placeholders, never invented quotes.
-- **No contact form** — the Calendly link is the only CTA (there's no backend).
+- ~~**No contact form**~~ — *superseded 2026-07-12.* The homepage now has an **intake form** that
+  posts to an n8n webhook backend (see Single-sourced values). Still no server in the *repo* — the
+  backend is n8n. Never collect CRM passwords/API keys in the form.
 - Keep it single-file, framework-free, responsive to 375px, no horizontal scroll.
 
 ## Related automation (lives outside this repo)
