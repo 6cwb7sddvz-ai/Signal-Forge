@@ -430,7 +430,7 @@
           <span class="pill reveal"><span class="dot" aria-hidden="true"></span> Done-for-you lead reactivation</span>
           <h1 class="reveal">We turn the <span class="grad-text">dead leads</span> in your CRM into <span class="grad-warm-text">booked revenue</span>.</h1>
           <p class="sub reveal">Data Thaw is a done-for-you reactivation service for local service businesses. We take the old leads and past customers already sitting in your database — the quote that went quiet, the one-time job, the "call me later" that never got a callback — and turn them into booked appointments <b>under your business name</b>.</p>
-          <p class="sub reveal">No ads. No retainers. No contracts. You pay a flat <b><span class="price">$100</span> for each appointment that actually shows up</b> — and your first 3 are completely free.</p>
+          <p class="sub reveal">No ads. No retainers. No contracts. You pay a flat <b><span class="price">fee based on your product's value</span> for each appointment that actually shows up</b> — and your first 3 are completely free.</p>
           <div class="trust-chips reveal">
             <span class="tchip cool"><span class="d" aria-hidden="true"></span> First 3 appointments free</span>
             <span class="tchip warm"><span class="d" aria-hidden="true"></span> Pay only per show</span>
@@ -600,7 +600,7 @@
         <div class="step reveal">
           <div class="num">3</div>
           <h3>You pay per appointment that shows</h3>
-          <p>Booked appointments land on your calendar. You pay a flat <span class="price">$100</span> for each one that actually shows up — nothing for no-shows, nothing upfront.</p>
+          <p>Booked appointments land on your calendar. You pay a flat <span class="price">fee based on your product's value</span> for each one that actually shows up — nothing for no-shows, nothing upfront.</p>
         </div>
       </div>
     </div>
@@ -615,7 +615,7 @@
           <h2 style="font-size:clamp(1.7rem,3.6vw,2.4rem)">All of the upside sits on our side of the table.</h2>
           <ul class="risk-list">
             <li><span class="tick" aria-hidden="true">✓</span><div><b>First 3 appointments are free.</b> <span class="d">You see real booked, shown appointments before you pay us a cent.</span></div></li>
-            <li><span class="tick" aria-hidden="true">✓</span><div><b>You only pay per show.</b> <span class="d">A flat <span class="price">$100</span> per appointment that actually shows up. No-shows cost you nothing.</span></div></li>
+            <li><span class="tick" aria-hidden="true">✓</span><div><b>You only pay per show.</b> <span class="d">A flat <span class="price">fee based on your product's value</span> per appointment that actually shows up. No-shows cost you nothing.</span></div></li>
             <li><span class="tick" aria-hidden="true">✓</span><div><b>No ad spend, ever.</b> <span class="d">This works your existing contacts — there's no new advertising budget to fund.</span></div></li>
             <li><span class="tick" aria-hidden="true">✓</span><div><b>Your own data does the work.</b> <span class="d">No retainers, no contracts. Just leads you already own, finally followed up with.</span></div></li>
           </ul>
@@ -651,7 +651,7 @@
         </details>
         <details class="reveal">
           <summary>What does it cost? <span class="plus" aria-hidden="true"></span></summary>
-          <div class="a">A flat <span class="price">$100</span> per appointment that shows up — and the first 3 are free. That fee is set against what a booked job is actually worth to you, so it stays a small fraction of the revenue each appointment brings in. No retainers, no setup fees, no contracts, no ad spend. You don't pay for no-shows, and you don't pay anything until you've already seen it work.</div>
+          <div class="a">A flat <span class="price">fee based on your product's value</span> per appointment that shows up — and the first 3 are free. That fee is set against what a booked job is actually worth to you, so it stays a small fraction of the revenue each appointment brings in. No retainers, no setup fees, no contracts, no ad spend. You don't pay for no-shows, and you don't pay anything until you've already seen it work.</div>
         </details>
         <details class="reveal">
           <summary>How fast do results come? <span class="plus" aria-hidden="true"></span></summary>
@@ -672,7 +672,7 @@
           <a class="btn" href="#start">Start with 3 free appointments <span class="arrow" aria-hidden="true">→</span></a>
           <a class="btn btn-ghost" href="https://calendly.com/signalforge-io/30min" target="_blank" rel="noopener">Book a 15-minute call</a>
         </div>
-        <div class="cta-note"><b>First 3 appointments free.</b> Then a flat <span class="price">$100</span> per appointment that shows.</div>
+        <div class="cta-note"><b>First 3 appointments free.</b> Then a flat <span class="price">fee based on your product's value</span> per appointment that shows.</div>
       </div>
     </div>
   </section>
@@ -701,13 +701,14 @@
 
 <script>
   /* ─────────────────────────────────────────────────────────────
-     1) YOUR PER-APPOINTMENT PRICE — edit this ONE line.
-     Set it to the flat fee you charge per appointment that shows,
-     based on the revenue an appointment generates for the client.
-     It auto-fills every price mention on the page.
-     Example: "$100", "$150", "$249"
+     1) YOUR PER-APPOINTMENT FEE WORDING — edit this ONE line.
+     This phrase auto-fills every fee mention on the page. It sits
+     right after the word "flat" (e.g. "a flat ___ for each
+     appointment"), so keep it value-based rather than a fixed
+     dollar amount.
+     Examples: "fee based on your product's value", "value-based fee"
   ───────────────────────────────────────────────────────────── */
-  var PRICE = "$100";
+  var PRICE = "fee based on your product's value";
 
   /* ─────────────────────────────────────────────────────────────
      2) INTAKE FORM DESTINATION — paste your n8n webhook URL here.

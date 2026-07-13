@@ -58,9 +58,11 @@ passwords or API keys — only which CRM they use (secure CRM pull happens later
   no horizontal scroll.
 
 ### Single-sourced values (change in ONE place)
-- **Per-appointment price:** do NOT hardcode the dollar amount in copy. The constant
-  `var PRICE = "$100";` near the bottom of `index.html` fills every `<span class="price">`. Add new
-  price mentions as empty `<span class="price"></span>`.
+- **Per-appointment fee wording:** the copy is deliberately **value-based, not a dollar amount**
+  (the user does not want a number shown). The constant `var PRICE = "fee based on your product's
+  value";` near the bottom of `index.html` fills every `<span class="price">` and sits right after
+  the word "flat" (e.g. "a flat ___ for each appointment"). Keep it a phrase, not a number; add new
+  mentions as `<span class="price">…</span>`.
 - **Calendly URL** (`https://calendly.com/signalforge-io/30min`) and **contact email**
   (`support@datathaw.com`) repeat across CTAs / footer — update all occurrences together.
   ⚠️ The Calendly handle is still `signalforge-io` (the actual account); changing that URL text
