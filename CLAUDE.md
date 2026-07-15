@@ -19,9 +19,10 @@ conversion goal is booking a 15-minute Calendly call.
 | File | Purpose |
 |------|---------|
 | `index.html` | The entire landing page — HTML + inline `<style>` + inline `<script>`. The main artifact. |
+| `logo.svg` | The Data Thaw droplet logo (cold→warm). Used as the header/footer `.mark` and favicon. |
 | `privacy.html` | Privacy Policy (standalone styled page, serif theme). |
 | `terms.html` | Terms & Conditions (same theme as privacy). |
-| `README.md` | Human-facing overview. *(Still says "Signal Forge" — not yet rebranded.)* |
+| `README.md` | Human-facing overview. |
 | `CLAUDE.md` | This file. |
 | `.gitignore`, `.claude/launch.json` | Housekeeping + local preview-server config. |
 
@@ -89,19 +90,20 @@ mechanics intact.
   server works; files also open via `file://` (except the footer legal links, which are relative).
 - **Host:** GitHub Pages, repo **`6cwb7sddvz-ai/Signal-Forge`**, branch `main`, `/root`. This local
   folder is a git clone of that repo (git identity is repo-local: Data Thaw / support@datathaw.com).
-- **Live URL (current):** `https://6cwb7sddvz-ai.github.io/Signal-Forge/`
+- **Live URL:** **`https://datathaw.com`** (custom domain, HTTPS enforced). The Pages default
+  `https://6cwb7sddvz-ai.github.io/Signal-Forge/` now 301-redirects to it.
 - **To update:** edit → `git add` the changed files → commit → `git push origin main`. Pages
-  rebuilds in ~30–60s. Verify with a cache-busted fetch of the live URL (Pages/CDN caches briefly).
+  rebuilds in ~30–60s. ⚠️ **datathaw.com is firewall-blocked from the Claude environment** — verify
+  deploys via `gh api repos/6cwb7sddvz-ai/Signal-Forge/pages/builds/latest` + a
+  `raw.githubusercontent.com/6cwb7sddvz-ai/Signal-Forge/main/<file>` fetch, NOT by fetching the
+  live domain. (See [[project-datathaw-deploy-verify]] in memory.)
 
-### Custom domain — `datathaw.com` (IN PROGRESS, not cut over)
-The site is moving to **datathaw.com** (GoDaddy-hosted DNS). As of 2026-07-10 the domain still
-points at a GoDaddy parking page, so the switch is **not done**. Sequence (do NOT skip the order):
-1. User adds DNS at GoDaddy: four apex `A` records → `185.199.108.153`/`.109.153`/`.110.153`/
-   `.111.153`, plus `www` CNAME → `6cwb7sddvz-ai.github.io`, and disables parking/forwarding.
-2. Only AFTER DNS resolves to those GitHub IPs: add a `CNAME` file containing `datathaw.com` to the
-   repo root and push, then enable **Enforce HTTPS** in repo Settings → Pages.
-Pushing the CNAME file before DNS is ready would take the live site offline — that's why it hasn't
-been committed yet.
+### Custom domain — `datathaw.com` (LIVE as of 2026-07-15)
+The site is served at **datathaw.com** via GoDaddy-hosted DNS (four apex `A` records →
+`185.199.108–111.153`, `www` CNAME → `6cwb7sddvz-ai.github.io`). A `CNAME` file containing
+`datathaw.com` is committed at the repo root and **Enforce HTTPS** is enabled (cert approved); the
+github.io URL 301-redirects here. If the domain ever changes, update the `CNAME` file and the
+GoDaddy DNS together.
 
 ## Hard content constraints (do not violate)
 - **No fabricated social proof** — no invented testimonials, fake client logos, or made-up
@@ -120,5 +122,5 @@ sending-domain warmup. That work is not part of this website repo; its infrastru
 public file. This CLAUDE.md governs the website only.
 
 ## Known follow-ups
-- `README.md` still says "Signal Forge" — rebrand when convenient.
-- Custom-domain CNAME cutover pending user's GoDaddy DNS change (see above).
+- Intake form's **optional file upload is not wired** yet — the form field exists, but the n8n
+  webhook is text-only (storing the file needs a Google Drive credential connected in n8n).
