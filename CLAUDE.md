@@ -63,10 +63,9 @@ passwords or API keys — only which CRM they use (secure CRM pull happens later
   value";` near the bottom of `index.html` fills every `<span class="price">` and sits right after
   the word "flat" (e.g. "a flat ___ for each appointment"). Keep it a phrase, not a number; add new
   mentions as `<span class="price">…</span>`.
-- **Calendly URL** (`https://calendly.com/signalforge-io/30min`) and **contact email**
-  (`support@datathaw.com`) repeat across CTAs / footer — update all occurrences together.
-  ⚠️ The Calendly handle is still `signalforge-io` (the actual account); changing that URL text
-  breaks booking unless the Calendly account itself is renamed first.
+- **Calendly URL** (`https://calendly.com/datathaw/30min`) and **contact email**
+  (`support@datathaw.com`) repeat across CTAs / footer — update all occurrences together. (The
+  Calendly account was renamed `signalforge-io` → `datathaw` on 2026-07-15; the old link now 404s.)
 - **Intake webhook:** the `var INTAKE_WEBHOOK = "…"` constant (next to `PRICE`) is the single place
   the form's POST target lives. It points at the live n8n **"Data Thaw — Website Intake"** workflow
   (webhook → honeypot filter → append to the **"Website Intake"** tab of the leads sheet, via the
@@ -122,5 +121,4 @@ public file. This CLAUDE.md governs the website only.
 
 ## Known follow-ups
 - `README.md` still says "Signal Forge" — rebrand when convenient.
-- Calendly account/link still `signalforge-io` — rename in Calendly, then update the 4 CTA URLs.
 - Custom-domain CNAME cutover pending user's GoDaddy DNS change (see above).

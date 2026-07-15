@@ -37,7 +37,7 @@ A few things are intentionally single-sourced — change them in one place:
   var PRICE = "$100";   // ← set your flat per-appointment fee here
   ```
   Add new price mentions with `<span class="price"></span>`.
-- **Calendly URL:** `https://calendly.com/signalforge-io/30min` (used on every CTA button).
+- **Calendly URL:** `https://calendly.com/datathaw/30min` (used on every CTA button).
 - **Contact email:** `SignalForge.io@gmail.com` (footer).
 - **Colors / theme:** driven by CSS variables in `:root` — `--accent` (blue `#3b82f6`),
   `--accent-2` (cyan `#22d3ee`), and `--grad` (the blue→cyan gradient). Restyle through
