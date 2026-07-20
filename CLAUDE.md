@@ -22,6 +22,7 @@ conversion goal is booking a 15-minute Calendly call.
 | `logo.svg` | The Data Thaw droplet logo (cold→warm). Used as the header/footer `.mark` and favicon. |
 | `privacy.html` | Privacy Policy (standalone styled page, serif theme). |
 | `terms.html` | Terms & Conditions (same theme as privacy). |
+| `sms.html` | SMS Messaging Program / opt-in disclosure page (same serif theme). Exists for A2P 10DLC carrier review — see below. |
 | `README.md` | Human-facing overview. |
 | `CLAUDE.md` | This file. |
 | `.gitignore`, `.claude/launch.json` | Housekeeping + local preview-server config. |
@@ -72,6 +73,32 @@ passwords or API keys — only which CRM they use (secure CRM pull happens later
   (webhook → honeypot filter → append to the **"Website Intake"** tab of the leads sheet, via the
   same Google Sheets OAuth cred the Plaid workflow uses). This is a **public endpoint** by nature
   (it's in client JS) — that's expected for any web form, same as a Formspree/Google-Form action.
+
+## A2P 10DLC / SMS compliance (`sms.html`)
+
+`sms.html` is not marketing copy — it is **evidence for carrier review**. Twilio rejected the A2P
+campaign on 2026-07-20 because the submitted opt-in description said consent is obtained by the
+client business and *not* through datathaw.com, leaving reviewers nothing to verify. Twilio requires
+a publicly accessible URL showing the consent flow and disclosure
+([error 30896](https://www.twilio.com/docs/api/errors/30896)).
+
+The page states who sends (the client business, under its own name; Data Thaw operates the
+platform), how consent is obtained, the **exact disclosure client businesses must display**, a
+static example of an **unchecked-by-default** consent checkbox
+([error 30925](https://www.twilio.com/docs/api/errors/30925)), frequency, rates, and the standard
+opt-in / HELP / STOP replies. When editing:
+
+- Keep every CTIA-required element intact: brand name, message frequency, "Message and data rates
+  may apply", STOP/HELP mechanics, and the no-sharing sentence.
+- The example checkbox must stay **unchecked and `disabled`** — a pre-checked box is itself a
+  rejection cause, and the demo must not be submittable.
+- Do not describe an opt-in path that isn't actually in use by client businesses. Reviewers verify
+  the URL; a false attestation risks a permanent brand block.
+
+**Open structural question:** Twilio/TCR treat a company messaging *other businesses'* customers as
+an **ISV/reseller**, expecting a separate brand + campaign per client with the client's own website
+registered. The current single Data Thaw brand + campaign may not survive review on that basis
+regardless of wording. Unresolved as of 2026-07-20.
 
 ## Legal pages (`privacy.html`, `terms.html`)
 
