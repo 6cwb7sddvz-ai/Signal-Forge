@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SMS Messaging Program | Data Thaw</title>
+<style>
+  :root{
+    --ink:#1c2530;
+    --muted:#5a6572;
+    --rule:#d8dde3;
+    --bg:#fbfbf9;
+    --accent:#2f5d8a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:Georgia,'Times New Roman',serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.65;
+    font-size:17px;
+  }
+  .page{max-width:760px;margin:0 auto;padding:56px 24px 80px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:36px}
+  .biz{font-family:Verdana,Arial,sans-serif;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+  h1{font-size:34px;font-weight:normal;letter-spacing:-.01em}
+  .updated{font-family:Verdana,Arial,sans-serif;font-size:12.5px;color:var(--muted);margin-top:10px}
+  h2{font-size:21px;font-weight:normal;margin:34px 0 12px;padding-top:6px}
+  h3{font-size:16px;font-family:Verdana,Arial,sans-serif;font-weight:bold;margin:22px 0 10px}
+  p{margin-bottom:14px}
+  ul{margin:0 0 14px 22px}
+  li{margin-bottom:7px}
+  .sms{
+    border:1px solid var(--rule);
+    border-left:3px solid var(--accent);
+    background:#fff;
+    padding:18px 20px;
+    margin:18px 0;
+  }
+  .sms p:last-child{margin-bottom:0}
+  strong{font-weight:bold}
+  footer{border-top:1px solid var(--rule);margin-top:48px;padding-top:20px;font-family:Verdana,Arial,sans-serif;font-size:12.5px;color:var(--muted)}
+  a{color:var(--accent)}
+
+  /* Non-functional illustration of the consent control clients must display */
+  .demo{
+    border:1px solid var(--rule);
+    background:#fff;
+    padding:22px 22px 24px;
+    margin:18px 0 22px;
+    font-family:Verdana,Arial,sans-serif;
+    font-size:13.5px;
+    line-height:1.55;
+  }
+  .demo .demo-cap{
+    font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--muted);margin-bottom:16px;
+  }
+  .demo label.fl{display:block;font-weight:bold;margin-bottom:5px;font-size:13px}
+  .demo .fake-input{
+    border:1px solid var(--rule);border-radius:3px;background:#fdfdfd;
+    padding:9px 11px;color:#9aa3ad;margin-bottom:16px;
+  }
+  .demo .consent{display:flex;gap:10px;align-items:flex-start}
+  .demo .consent input{margin-top:3px;flex:0 0 auto}
+  .demo .consent span{color:#3d4752}
+  .msg{
+    font-family:Verdana,Arial,sans-serif;font-size:13.5px;line-height:1.55;
+    background:#fff;border:1px solid var(--rule);border-radius:3px;
+    padding:13px 15px;margin:0 0 12px;
+  }
+  .msg b{display:block;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;font-weight:normal}
+  @media(max-width:520px){h1{font-size:27px}.page{padding-top:36px}.demo{padding:18px}}
+</style>
+</head>
+<body>
+<div class="page">
+
+<header>
+  <div class="biz">Data Thaw</div>
+  <h1>SMS Messaging Program</h1>
+  <div class="updated">Last updated: 07/20/2026</div>
+</header>
+
+<p>This page documents the text-messaging program Data Thaw operates on behalf of local service
+businesses, including how consent is obtained, what messages are sent, and how recipients opt out.
+It exists so that customers, client businesses, and mobile carriers can review our messaging
+practices in one place.</p>
+
+<h2>Program and Message Types</h2>
+<p><strong>Program name:</strong> Data Thaw Appointment &amp; Reactivation Messaging.</p>
+<p>Messages sent under this program fall into these categories:</p>
+<ul>
+  <li>Appointment reminders and scheduling confirmations;</li>
+  <li>Follow-ups on an open quote, estimate, or service request;</li>
+  <li>Occasional offers or service reminders from a business the recipient is an existing customer or prior lead of.</li>
+</ul>
+
+<h2>Who Sends These Messages</h2>
+<p>Messages are sent <strong>on behalf of, and under the business name of, the local service
+business</strong> that the recipient has an existing relationship with &mdash; for example a
+plumbing, HVAC, dental, or home-services company. Data Thaw operates the messaging platform for
+that business; the business is the sender of record and is identified by name in every message.</p>
+<p>Data Thaw does not purchase, rent, sell, or share contact lists. We only message contacts
+supplied by the business that already has a relationship with them, and only where that business
+has obtained consent to send text messages.</p>
+
+<h2>How Consent Is Obtained</h2>
+<p>Consent is collected by the service business at the point the customer provides their mobile
+number &mdash; on that business's own intake or contact form, quote or estimate request, online
+appointment booking, or at the point of sale. The customer affirmatively agrees to receive text
+messages by checking a consent box that is <strong>not pre-selected</strong>; consent is never
+bundled into another agreement and is never a condition of purchase.</p>
+
+<h3>Required consent disclosure</h3>
+<p>Every business we send on behalf of is required to display the following disclosure next to the
+consent control, with its own name substituted:</p>
+<div class="sms">
+  <p>By providing your mobile number and checking this box, you agree to receive text messages from
+  <strong>[Business Name]</strong> about your appointment, service, and occasional offers. Message
+  frequency varies. Message and data rates may apply. Reply <strong>STOP</strong> to opt out or
+  <strong>HELP</strong> for help. See our Privacy Policy and Terms.</p>
+</div>
+
+<h3>Example of the consent control</h3>
+<p>The illustration below shows how the consent control appears on a client business's form. It is
+a static example for reference and does not submit anything.</p>
+<div class="demo">
+  <div class="demo-cap">Example &mdash; [Business Name] appointment request form</div>
+  <label class="fl" for="demo-phone">Mobile phone</label>
+  <div class="fake-input" id="demo-phone">(555) 123-4567</div>
+  <div class="consent">
+    <input type="checkbox" id="demo-consent" disabled>
+    <span>By providing your mobile number and checking this box, you agree to receive text messages
+    from [Business Name] about your appointment, service, and occasional offers. Message frequency
+    varies. Message and data rates may apply. Reply STOP to opt out or HELP for help. See our
+    Privacy Policy and Terms.</span>
+  </div>
+</div>
+
+<h2>Message Frequency and Rates</h2>
+<p>Message frequency varies, typically 1&ndash;5 messages per inquiry, appointment, or campaign.
+<strong>Message and data rates may apply.</strong> Carriers are not liable for delayed or
+undelivered messages.</p>
+
+<h2>Opting Out and Getting Help</h2>
+<ul>
+  <li><strong>To opt out:</strong> reply <strong>STOP</strong>, <strong>END</strong>,
+  <strong>CANCEL</strong>, <strong>UNSUBSCRIBE</strong>, or <strong>QUIT</strong> to any message.
+  You will receive one confirmation message and then no further messages.</li>
+  <li><strong>To resubscribe:</strong> reply <strong>START</strong>.</li>
+  <li><strong>For help:</strong> reply <strong>HELP</strong> or <strong>INFO</strong>, email
+  <a href="mailto:support@datathaw.com">support@datathaw.com</a>, or call 803-820-0608.</li>
+</ul>
+<p>Opt-out requests are honored immediately and apply to the business that sent the message.</p>
+
+<h3>Standard replies</h3>
+<div class="msg"><b>Opt-in confirmation</b>[Business Name]: You're subscribed to appointment and service updates. Msg frequency varies. Msg &amp; data rates may apply. Reply HELP for help, STOP to cancel.</div>
+<div class="msg"><b>HELP reply</b>[Business Name] appointment messaging, powered by Data Thaw. For help email support@datathaw.com or call 803-820-0608. Msg &amp; data rates may apply. Reply STOP to unsubscribe.</div>
+<div class="msg"><b>STOP reply</b>You have successfully been unsubscribed. You will not receive any more messages from this number. Reply START to resubscribe.</div>
+
+<h2>Mobile Information and Privacy</h2>
+<div class="sms">
+  <p><strong>No mobile information will be shared with third parties or affiliates for marketing or
+  promotional purposes.</strong> Text messaging originator opt-in data and consent are excluded from
+  all information sharing; this information will not be shared with, or sold to, any third
+  parties.</p>
+</div>
+<p>Full details are in our <a href="privacy.html">Privacy Policy</a> and
+<a href="terms.html">Terms &amp; Conditions</a>.</p>
+
+<h2>Contact Us</h2>
+<p>Questions about this messaging program, or about a message you received:</p>
+<p>Data Thaw<br>
+Charleston, SC<br>
+Email: support@datathaw.com<br>
+Phone: 803-820-0608</p>
+
+<footer>&copy; 2026 Data Thaw. All rights reserved. &nbsp;|&nbsp; <a href="privacy.html">Privacy Policy</a> &nbsp;|&nbsp; <a href="terms.html">Terms &amp; Conditions</a></footer>
+
+</div>
+</body>
+</html>
